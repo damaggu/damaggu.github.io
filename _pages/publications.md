@@ -8,7 +8,7 @@ nav_order: 1
 ---
 <!-- _pages/publications.md -->
 <div class="publications">
-
+<p>* denotes equal contribution</p>
 {% bibliography -f {{ site.scholar.bibliography }} %}
 
 </div>
