@@ -45,7 +45,8 @@
         {%- for author in entry.author_array limit: author_array_limit -%}
           {%- assign author_is_self = false -%}
           {%- assign author_last_name = author.last | remove: "¶" | remove: "&" | remove: "†" | remove: "^" -%}
-          {%- if site.scholar.last_name contains author_last_name -%}
+          {%- assign author_last_name_for_comparison = author_last_name | remove: "*" -%}
+          {%- if site.scholar.last_name contains author_last_name_for_comparison -%}
             {%- if site.scholar.first_name contains author.first -%}
               {%- assign author_is_self = true -%}
             {%- endif -%}
@@ -59,6 +60,7 @@
               {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
+        {%- endfor -%}
 
           {%- if forloop.length > 1 -%}
             {%- if forloop.first == false -%},&nbsp;{%- endif -%}
