@@ -6,7 +6,7 @@ permalink: /
 
 profile:
   align: left # "left" or "right". Determines the side profile picture is shown on
-  image: prof_pic.jpg
+  image: marks_markus.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
 #    <p>555 your office number</p>
