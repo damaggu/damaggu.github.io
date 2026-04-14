@@ -1,12 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - damaggu
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - vanvalenlab/cellSAM
+  - damaggu/TADP
+  - damaggu/MABe2022
+  - damaggu/robust_disentanglement
+  - SIPEC-Animal-Data-Analysis/SIPEC

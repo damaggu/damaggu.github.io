@@ -4,3 +4,55 @@
 
 "PhysRev":
   url: https://journals.aps.org/
+
+"NatMethods":
+  url: https://www.nature.com/nmeth/
+  color: "#c42f2f"
+
+"CVPR":
+  url: https://cvpr.thecvf.com/
+  color: "#2d6ab2"
+
+"ICML":
+  url: https://icml.cc/
+  color: "#d45500"
+
+"NatMachIntell":
+  url: https://www.nature.com/natmachintell/
+  color: "#326599"
+
+"NeurIPS":
+  url: https://neurips.cc/
+  color: "#7b2d8e"
+
+"NatComm":
+  url: https://www.nature.com/ncomms/
+  color: "#e68a00"
+
+"WACV":
+  url: https://wacv2025.thecvf.com/
+  color: "#1a8a5c"
+
+"IJCV":
+  url: https://www.springer.com/journal/11263
+  color: "#2d6ab2"
+
+"ICLR":
+  url: https://iclr.cc/
+  color: "#c4122f"
+
+"JAnimEcol":
+  url: https://besjournals.onlinelibrary.wiley.com/journal/13652656
+  color: "#4a7c3f"
+
+"IJC":
+  url: https://www.internationaljournalofcardiology.com/
+  color: "#b33a3a"
+
+"NeuroImage":
+  url: https://www.sciencedirect.com/journal/neuroimage
+  color: "#2e86ab"
+
+"FrontNeuroinf":
+  url: https://www.frontiersin.org/journals/neuroinformatics
+  color: "#1a5276"

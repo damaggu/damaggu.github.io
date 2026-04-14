@@ -2,6 +2,11 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
+// Global scale
+html {
+  font-size: 90%;
+}
+
 // Typography
 
 p,
@@ -37,6 +42,7 @@ table {
 a,
 table.table a {
   color: var(--global-theme-color);
+  transition: color 0.2s ease;
 
   &:hover {
     color: var(--global-theme-color);
@@ -159,10 +165,40 @@ blockquote {
   color: var(--global-theme-color);
 }
 
-// Profile
+// Profile + Bio flexbox layout
+
+.about-bio-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.about-bio-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+  text-align: justify;
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+}
 
 .profile {
-  width: 100%;
+  width: 50%;
+  flex-shrink: 0;
+
+  @media (min-width: 576px) {
+    width: 17%;
+  }
 
   .more-info {
     margin-bottom: 5px;
@@ -174,26 +210,44 @@ blockquote {
       margin: 0;
     }
   }
-}
 
-.profile.float-right {
-  margin-left: 1rem;
-}
+  figure {
+    overflow: visible;
+    display: inline-block;
+    margin: 0;
+  }
 
-.profile.float-left {
-  margin-right: 1rem;
-}
+  picture {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    border-radius: 0.25rem;
+  }
 
-@media (min-width: 576px) {
-  .profile {
-    width: 13%;
+  picture:hover {
+    transform: scale(1.05);
+  }
 
-    .address {
+  .address {
+    @media (min-width: 576px) {
       p {
         display: block;
       }
     }
   }
+}
+
+// About page name accent
+.post-title .font-weight-bold {
+  text-decoration: none;
+}
+
+// Larger, more commanding name
+.post-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.8rem;
 }
 
 .post-description {
@@ -215,9 +269,10 @@ blockquote {
 
 .navbar {
   box-shadow: none;
-  border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
-  opacity: 0.95;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background-color: rgba(var(--global-bg-color-rgb, 0,0,0), 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .navbar .dropdown-menu {
@@ -269,6 +324,8 @@ blockquote {
     background-color: inherit;
     font-weight: bolder;
     color: var(--global-theme-color);
+    border-bottom: 2px solid var(--global-theme-color);
+    padding-bottom: 0.3rem;
 
     &:hover {
       color: var(--global-hover-color);
@@ -355,13 +412,29 @@ blockquote {
     font-size: 4rem;
 
     a {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 0.5rem;
+      text-decoration: none;
+
       i::before {
         color: var(--global-text-color);
         transition-property: all 0.2s ease-in-out;
       }
 
+      &::after {
+        content: none;
+      }
+
       &:hover {
+        text-decoration: none;
+
         i::before {
+          color: var(--global-theme-color);
+        }
+
+        &::after {
           color: var(--global-theme-color);
         }
       }
@@ -406,21 +479,31 @@ blockquote {
 
 // Footer
 footer.fixed-bottom {
-  background-color: var(--global-footer-bg-color);
-  font-size: 0.75rem;
+  background: linear-gradient(180deg, transparent, rgba(var(--global-theme-color-rgb, 74,111,165), 0.02));
+  font-size: 0.7rem;
+  border-top: none;
 
   .container {
-    color: var(--global-footer-text-color);
-    padding-top: 9px;
-    padding-bottom: 8px;
+    color: #ffffff;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
   }
 
   a {
-    color: var(--global-footer-link-color);
+    color: #ffffff;
 
     &:hover {
       color: var(--global-theme-color);
       text-decoration: none;
+    }
+  }
+
+  .footer-links {
+    margin-left: 0.5rem;
+
+    a {
+      margin-left: 0.75rem;
     }
   }
 }
@@ -591,6 +674,13 @@ footer.sticky-bottom {
   }
 
   .card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
     img {
       width: 100%;
     }
@@ -645,12 +735,15 @@ footer.sticky-bottom {
   }
 
   h2.bibliography {
-    color: var(--global-divider-color);
+    color: var(--global-text-color-light);
     border-top: 1px solid var(--global-divider-color);
     padding-top: 1rem;
-    margin-top: 2rem;
-    margin-bottom: -2rem;
-    text-align: right;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   ol.bibliography {
@@ -659,12 +752,41 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
+      padding: 1.1rem 1rem;
+      border-radius: 8px;
+      background: rgba(var(--global-theme-color-rgb, 74,111,165), 0.015);
+      border: 1px solid rgba(var(--global-theme-color-rgb, 74,111,165), 0.03);
+      transition: all 0.3s ease;
 
-      .preview {
+      &:hover {
+        background: rgba(var(--global-theme-color-rgb, 74,111,165), 0.05);
+        border-color: rgba(var(--global-theme-color-rgb, 74,111,165), 0.12);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .col-sm-3.preview {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 0.25rem;
+      }
+
+      .preview img,
+      .preview picture img {
         width: 100%;
-        min-width: 80px;
-        max-width: 200px;
+        height: 140px;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 6px;
+        transition: filter 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      &:hover .preview img,
+      &:hover .preview picture img {
+        filter: brightness(1.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
 
       .abbr {
@@ -690,6 +812,12 @@ footer.sticky-bottom {
           color: var(--global-theme-color) !important;
           border: 1px solid var(--global-theme-color);
         }
+      }
+
+      .venue-abbr {
+        color: var(--global-theme-color);
+        font-weight: 600;
+        font-style: normal;
       }
 
       .title {
@@ -725,17 +853,24 @@ footer.sticky-bottom {
 
       .links {
         a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 0.25rem;
-          padding-bottom: 0.25rem;
+          color: var(--global-theme-color);
+          background: rgba(var(--global-theme-color-rgb, 74,111,165), 0.07);
+          border: none;
+          padding: 0.2rem 0.6rem;
           margin-left: 0;
+          border-radius: 100px;
+          font-size: 0.75rem;
+          transition: background 0.2s ease, color 0.2s ease;
+          overflow: hidden;
+          position: relative;
+
+          // Kill MDB ripple/waves effect
+          .waves-ripple {
+            display: none !important;
+          }
 
           &:hover {
-            color: var(--global-theme-color);
-            border-color: var(--global-theme-color);
+            background: rgba(var(--global-theme-color-rgb, 74,111,165), 0.15);
           }
         }
       }
@@ -756,19 +891,16 @@ footer.sticky-bottom {
       }
 
       .hidden {
-        font-size: 0.875rem;
-        max-height: 0px;
+        font-size: 0.82rem;
+        max-height: 0;
         overflow: hidden;
         text-align: justify;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
+        transition: max-height 0.3s ease;
 
         p {
-          line-height: 1.4em;
-          margin: 10px;
+          line-height: 1.5;
+          margin: 0.5rem 0;
+          color: var(--global-text-color-light);
         }
 
         pre {
@@ -778,23 +910,59 @@ footer.sticky-bottom {
         }
       }
 
+      .copy-bib-btn {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        background: var(--global-card-bg-color);
+        color: var(--global-text-color);
+        border: 1px solid var(--global-divider-color);
+        border-radius: 0.25rem;
+        padding: 0.15rem 0.5rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        z-index: 1;
+        transition: color 0.2s ease, border-color 0.2s ease;
+
+        &:hover {
+          color: var(--global-theme-color);
+          border-color: var(--global-theme-color);
+        }
+      }
+
+      .bibtex.hidden {
+        position: relative;
+      }
+
       .hidden.open {
-        max-height: 100em;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
+        max-height: 30em;
+        transition: max-height 0.3s ease;
       }
 
       div.abstract.hidden {
-        border: dashed 1px var(--global-bg-color);
+        border: none;
       }
 
       div.abstract.hidden.open {
-        border-color: var(--global-text-color);
+        border: none;
+        margin-top: 0.4rem;
       }
     }
+  }
+}
+
+// Disable MDB ripple effect on publication buttons
+.publications ol.bibliography .links a.btn {
+  .ripple-wave,
+  .waves-ripple {
+    display: none !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  &.ripple-surface::before,
+  &.ripple-surface::after {
+    display: none !important;
   }
 }
 
@@ -833,6 +1001,13 @@ html.transition *:before,
 html.transition *:after {
   transition: all 750ms !important;
   transition-delay: 0 !important;
+}
+
+// About page section dividers
+.post article > .reveal + .reveal {
+  margin-top: 0.5rem;
+  padding-top: 0;
+  border-top: none;
 }
 
 // Extra Markdown style (post Customization)
@@ -1025,6 +1200,60 @@ nav[data-toggle="toc"] {
     height: 0;
     top: 0;
   }
+}
+
+// Scroll-triggered reveal animations
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Staggered reveal: items start hidden, JS controls the cascade
+.reveal-stagger-item {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.reveal-stagger-item.stagger-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+// Particle hero container
+.hero-particle-container {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(180deg, transparent, var(--global-bg-color));
+    pointer-events: none;
+  }
+}
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-particle-container .post-header {
+  position: relative;
+  z-index: 1;
 }
 
 .featured-posts {

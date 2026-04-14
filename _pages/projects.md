@@ -2,10 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of your cool projects.
-nav: true
+description: Research projects in computer vision, foundation models, and computational biology.
+nav: false
 nav_order: 2
-display_categories: [work, fun]
+display_categories: [foundation models, behavior analysis]
 horizontal: false
 ---
 

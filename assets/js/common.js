@@ -9,6 +9,13 @@ $(document).ready(function() {
     $(this).parent().parent().find(".abstract.hidden.open").toggleClass('open');
   });
   $('a').removeClass('waves-effect waves-light');
+  // Remove MDB ripple from publication buttons
+  $('.publications .links a.btn').removeClass('waves-effect waves-light btn-outline-primary ripple-surface');
+  // Prevent MDB ripple on click by immediately removing ripple elements
+  $(document).on('mousedown touchstart', '.publications .links a.btn', function() {
+    var el = this;
+    setTimeout(function() { $(el).find('.ripple-wave').remove(); }, 0);
+  });
 
   // bootstrap-toc
   if($('#toc-sidebar').length){
