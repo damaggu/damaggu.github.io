@@ -15,7 +15,7 @@ selected_papers: true
 social: true
 ---
 
-I am a Senior Staff Research Scientist at [CZ Biohub](https://www.czbiohub.org/), working on foundational models for biology.
+I am a Senior Staff Research Scientist at [Biohub (formerly CZI)](https://www.czbiohub.org/), working on foundational models for biology.
 Before that I was a Research Scientist at FAIR ([AI at Meta](https://ai.meta.com/research/)) working on fundamental computer vision ([SAM 3](https://github.com/facebookresearch/sam3)).
 Before that I was a postdoctoral scholar in the Vision Group at Caltech, working with [Pietro Perona](https://scholar.google.com/citations?user=j29kMCwAAAAJ&hl=en&oi=ao). 
 I received my Ph.D. from ETH Zurich, where I worked with [Mehmet Yanik](https://scholar.google.com/citations?user=_-KTH7wAAAAJ&hl=en) along with [Valerio Mante](https://scholar.google.com/citations?hl=en&user=2hu9WYkAAAAJ), [Angelika Steger](https://scholar.google.com/citations?hl=en&user=Kzeoyq8AAAAJ), and [Benjamin Grewe](https://scholar.google.com/citations?hl=en&user=ZA-1rh8AAAAJ) on my advisory committee.
